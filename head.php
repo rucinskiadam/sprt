@@ -1,9 +1,41 @@
 <?php
+
+
+
+
 session_start();
 	if(isset($_POST['login']) && isset($_POST['password'])){
-	echo $_POST['login'].' '.$_POST['password'];
-	$_SESSION['login'] = $_POST['login'];
-	$_SESSION['password'] = $_POST['password'];
+
+	$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "turka";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}else{
+	$query="SELECT id,login,password,name,surname,permissions FROM users where login='".$_POST['login']."' and password='".$_POST['password']."'  limit 1";
+	$result = mysqli_query($conn, $query);
+	if ($result->num_rows > 0) {
+		while($row = mysqli_fetch_assoc($result)) {
+			$_SESSION['login'] = $row["login"];
+			$_SESSION['password'] = $row['password'];
+			$_SESSION['name'] = $row['name'];
+			$_SESSION['surname'] = $row['surname'];
+			$_SESSION['permissions']=$row['permissions'];
+			echo '<div style="color:green;">';
+				echo "Zalogowano pomyślnie";
+			echo '</div>';
+		}
+	}else {
+		echo '<div style="color:red;">';
+			echo "Błędny login lub hasło!!";
+		echo '</div>';
+	}
+	mysqli_close($conn);
+} 
+
 	
 }else if(isset($_POST['logout'])  ){
 	//unset($_SESSION['login']);

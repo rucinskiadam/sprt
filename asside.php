@@ -3,8 +3,20 @@
 				<section>
 	<?php
 	if(!isset($_SESSION['login']) && !isset($_SESSION['password'])){
+		if(isset($_SERVER['HTTP_REFERER'])){
+			$file=explode('/',$_SERVER['HTTP_REFERER']);
+			$file[sizeof($file)-1];
+			if($file[sizeof($file)-1]==''){
+			$f='index.php';
+		}else{
+			$f=$file[sizeof($file)-1];
+		}
+	}else{
+		$f='index.php';
+	}
+		
 	echo '<h3>Logowanie</h3>';
-	echo '<form method="POST" action="index.php" >';
+	echo '<form method="POST" action="'.$f.'" >';
 	echo '<table>';
 	echo '<tr >';
 	echo '<td height="40" width="50">';
@@ -31,7 +43,7 @@
 	echo '</form>';
 	}else{
 		echo 'Witaj!'.'<br>';
-		echo 'Zalogowano jako: '.$_SESSION['login'].'<br>';
+		echo 'Zalogowano jako: '.$_SESSION['name'].' '.$_SESSION['surname'].'<br>';
 		echo '<div style="width:130px;">';
 		echo '<form method="POST" action="index.php" >';
 			echo '<input type="hidden" name="logout" value="1" >';

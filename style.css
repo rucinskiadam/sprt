@@ -124,7 +124,7 @@ header section {
 	width: 998px;
 	height: 280px;
 	margin: auto;
-	background: url('gfx/h.png') no-repeat;
+	background: url('gfx/hh.jpg') no-repeat;
 	text-align: left;
 	}
 
@@ -284,7 +284,7 @@ footer>div>div {
 	left: 0;
 	height: 180px;	
 	width: 998px;
-	background: url('gfx/h.png') no-repeat 0 -86px
+	background: url('gfx/footer.jpg') no-repeat 0 -86px
 	}
 
 footer>div>div>div {
