@@ -2,45 +2,46 @@
 			
 				<section>
 	<?php
-	if(!isset($_SESSION['login']) && !isset($_SESSION['password'])){
+	$f;
 		if(isset($_SERVER['HTTP_REFERER'])){
 			$file=explode('/',$_SERVER['HTTP_REFERER']);
 			$file[sizeof($file)-1];
 			if($file[sizeof($file)-1]==''){
-			$f='index.php';
+				$f='index.php';
+			}else{
+				$f=$file[sizeof($file)-1];
+			}
 		}else{
-			$f=$file[sizeof($file)-1];
+			$f='index.php';
 		}
-	}else{
-		$f='index.php';
-	}
-		
-	echo '<h3>Logowanie</h3>';
-	echo '<form method="POST" action="'.$f.'" >';
-	echo '<table>';
-	echo '<tr >';
-	echo '<td height="40" width="50">';
-	echo 'Email:'; ;
-	echo '</td>';
-	echo '<td height="40">';
-	echo '<input type="text" name="login" placeholder="email" >';
-	echo '</td>';
-	echo '</tr>';
-	echo '<tr>';
-	echo '<td height="40">';
-	echo 'Hasło';
-	echo '</td>';
-	echo '<td>';
-	echo '<input type="password" name="password" placeholder="Hasło" >';
-	echo '</td>';
-	echo '</tr>';
-	echo '<tr>';
-	echo '<td colspan="2">';
-	echo '<input type="submit" name="submit" value="Zaloguj" style="float:right;">';
-	echo '</td>';
-	echo '</tr>';
-	echo '</table>';
-	echo '</form>';
+	if(!isset($_SESSION['login']) && !isset($_SESSION['password'])){
+
+		echo '<h3>Logowanie</h3>';
+		echo '<form method="POST" action="'.$f.'" >';
+		echo '<table>';
+		echo '<tr >';
+		echo '<td height="40" width="50">';
+		echo 'Email:'; ;
+		echo '</td>';
+		echo '<td height="40">';
+		echo '<input type="text" name="login" placeholder="email" >';
+		echo '</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td height="40">';
+		echo 'Hasło';
+		echo '</td>';
+		echo '<td>';
+		echo '<input type="password" name="password" placeholder="Hasło" >';
+		echo '</td>';
+		echo '</tr>';
+		echo '<tr>';
+		echo '<td colspan="2">';
+		echo '<input type="submit" name="submit" value="Zaloguj" style="float:right;">';
+		echo '</td>';
+		echo '</tr>';
+		echo '</table>';
+		echo '</form>';
 	}else{
 		echo 'Witaj!'.'<br>';
 		echo 'Zalogowano jako: '.$_SESSION['name'].' '.$_SESSION['surname'].'<br>';
