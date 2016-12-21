@@ -12,7 +12,7 @@ include('head.php');
 				$query="SELECT  articles.`article`, articles.`date`, articles.`time`, articles.`acces`, articles.`header`, users.name,users.surname FROM articles join users 
 						ON
 						articles.creator = users.login
-						order by date,time
+						order by date desc,time desc
 					";
 				$result = mysqli_query($conn, $query);
 				if ($result->num_rows > 0) {

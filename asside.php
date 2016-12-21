@@ -43,18 +43,51 @@
 		echo '</table>';
 		echo '</form>';
 	}else{
-		echo 'Witaj!'.'<br>';
-		echo 'Zalogowano jako: '.$_SESSION['name'].' '.$_SESSION['surname'].'<br>';
 		echo '<div style="width:130px;">';
+		echo 'Witaj!'.'<br>';
+		echo 'Zalogowano jako: '.$_SESSION['name'].' '.$_SESSION['surname'];
+		echo '</div>';
+		/*echo '<div style="width:130px;">';
 		echo '<form method="POST" action="index.php" >';
 			echo '<input type="hidden" name="logout" value="1" >';
-			echo '<input type="submit" name="submit" value="Wyloguj" style="float:right;">';
+			echo '<input type="submit" name="submit" value="Wyloguj" style="width:130px;">';
 		echo '</form>';
-		echo '</div>';
+		echo '</div>';*/
 	}
 	?>
-				</section>
+			</section>
+			<section>	
+			<?php
+			if(isset($_SESSION['login']) && isset($_SESSION['password'])){
+				echo '<nav class="breadcrumbs">';
+					echo '<div style="width:130px;display: block;padding: 2px;">';
+						echo '<form method="POST" action="create_article.php" >';
+							echo '<input type="submit" name="submit" value="Dodaj artykuł" >';
+						echo '</form>';
+					echo '</div>';
 					
+					echo '<div style="width:130px;display: block;padding: 2px;">';
+						echo '<form method="POST" action="edit_articles.php" >';
+							echo '<input type="submit" name="submit" value="Edycja artykułów" >';
+						echo '</form>';
+					echo '</div>';
+				
+				
+				echo '<div style="width:130px;display: block;padding: 2px;">';
+				echo '<form method="POST" action="index.php" >';
+					echo '<input type="hidden" name="logout" value="1" >';
+					echo '<input type="submit" name="submit" value="Wyloguj" >';
+				echo '</form>';
+				
+				
+				echo '</nav>';
+				echo '</div>';
+				echo '<br><br>';
+				echo '<br><br>';
+				echo '<br><br>';
+			}	
+			?>
+			</section>	
 				<section>
 					<h3>Godziny otwarcia</h3>
 					<p>

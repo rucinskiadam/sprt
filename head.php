@@ -48,12 +48,18 @@ if($conn){
 		<meta name="robots" content="index, follow">
 		<link rel="shortcut icon" href="gfx/favicon.png">
 		<link rel="stylesheet" href="style.css" type="text/css">
-		<META HTTP-EQUIV="Content-Type" content="text/html; charset=utf-8">
+	
 		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
 		 <script src="tinymce/tinymce.min.js"></script>
 		<script>
-				tinymce.init({
-  selector: 'textarea'  // change this value according to your HTML
+tinymce.init({
+    selector: "textarea",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste"
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
 });
 		</script>
 	</head>
@@ -80,6 +86,7 @@ if($conn){
 					
 				</ul>
 			</nav>
+
 			<section>
 				<a href="index.php" title="">
 					Stowarzyszenie Przyjaciół
@@ -92,25 +99,5 @@ if($conn){
 		
 		<main>
 			<section>
-			<?php
-			if(isset($_SESSION['login']) && isset($_SESSION['password'])){
-				echo '<nav class="breadcrumbs">';
-					echo '<div style="width:130px;float:left;display: inline-block;padding: 10px">';
-						echo '<form method="POST" action="create_article.php" >';
-							echo '<input type="submit" name="submit" value="Dodaj artykuł" >';
-						echo '</form>';
-					echo '</div>';
-					
-					echo '<div style="width:130px;float:left;display: inline-block;padding: 10px">';
-						echo '<form method="POST" action="edit_articles.php" >';
-							echo '<input type="submit" name="submit" value="Edycja artykułów" >';
-						echo '</form>';
-					echo '</div>';
-				echo '</nav>';
-				
-				echo '<br><br>';
-				echo '<br><br>';
-				echo '<br><br>';
-			}	
-			?>
+			
 	

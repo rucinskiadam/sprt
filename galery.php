@@ -5,8 +5,9 @@ include('head.php');
 <!------STALE ELEMENTY--------->
 
 				<h1>Galeria</h1>
-			
 <?php
+
+
 	$photo_arr = scandir("galery");
 	//print_r($photo_arr);
 	
@@ -23,7 +24,7 @@ include('head.php');
 			//echo $size[3].'<br>';
 			$s=explode(',',$size[3]);
 			//print_r($s);
-			echo '<br>';
+			//echo '<br>';
 			echo '<img src="galery/'.$photo.'"  width="'.$s[0]/5 .'" height="'.$s[1]/5 .'" >';
 		}
 	}

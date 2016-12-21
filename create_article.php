@@ -72,11 +72,7 @@ include('foot.php');
 ?>
 <!------STALE ELEMENTY--------->
 <script>
-    window.onload = function () {
-        tinymce.get('content').on('keyup',function(e){
-            console.log(this.getContent().replace(/(<[a-zA-Z\/][^<>]*>|\[([^\]]+)\])|(\s+)/ig,''));
-        });
-    }
+   
 function article_test(){
 	var hed=document.getElementById("h_in").value;
 	document.getElementById("head_test").innerHTML = "<h1>" + hed + "</h1>";
